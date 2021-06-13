@@ -1,18 +1,25 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
+const { Sequelize } = require('sequelize');//mysql orm sequelize
 
-const connectRedshiftDB = () => {
-  var Redshift = require("node-redshift");
-  var options = {};
-  var client = {
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    host: process.env.DB_HOST,
-  };
-  return new Redshift(client, [options]);
-};
+//setting up mysql connection
+const sequelize = new Sequelize(process.env.DB_MYSQL_NAME, process.env.DB_MYSQL_USER, process.env.DB_MYSQL_PASSWORD, {
+  host: process.env.DB_MYSQL_HOST,
+  dialect: 'mysql'
+});
+//function to check mysql connection
+const checkConnection=async ()=>{
+    try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+checkConnection()
+
+
+
 const connectMongoDB = () => {
   try {
     mongoose.connect(process.env.MONGO_URL, {
@@ -28,4 +35,4 @@ const connectMongoDB = () => {
     process.exit(1);
   }
 };
-module.exports = { connectMongoDB, connectRedshiftDB };
+module.exports = { connectMongoDB,sequelize };

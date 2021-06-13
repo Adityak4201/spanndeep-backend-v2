@@ -1,4 +1,4 @@
-const { connectRedshiftDB } = require("../db/connect");
+const { connectRedshiftDB } = require("../db/redshift-conn");
 
 exports.Fetch = async function (req, res) {
   const redshiftClient = connectRedshiftDB();
