@@ -26,7 +26,7 @@ exports.Register = async function (req, res) {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-  const { email, password, firstName, lastName, age, gender, country, state, organization } = req.body;
+  const { email, password, firstName, lastName, age, gender, country, state, organization, phone } = req.body;
   try {
     const createdUser = await createUser({
       email,
@@ -37,7 +37,8 @@ exports.Register = async function (req, res) {
       gender,
       country,
       state,
-      organization
+      organization,
+      phone
     });
     // console.log(createdUser);
     delete createdUser.password;

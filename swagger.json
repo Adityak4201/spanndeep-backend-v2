@@ -130,6 +130,10 @@
                 "lastName": "Doe",
                 "age": "21",
                 "gender": "MALE",
+                "country": "India",
+                "state": "Assam",
+                "organization": "tanmanngadi",
+                "phone":"1234567890",
                 "createdAt": "2021-06-01T03:49:51.501Z",
                 "updatedAt": "2021-06-01T03:49:51.501Z",
                 "__v": 0
@@ -163,7 +167,11 @@
                 "firstName": "John",
                 "lastName": "Doe",
                 "age": "21",
-                "gender": "MALE"
+                "gender": "MALE",
+                "country": "India",
+                "state": "Assam",
+                "organization": "tanmanngadi",
+                "phone":"1234567890"
               }
             }
           }
@@ -248,6 +256,7 @@
                 "country": "India",
                 "state": "Assam",
                 "organization": "tanmanngadi",
+                "phone":"1234567890",
                 "createdAt": "2021-06-29T14:59:01.653Z",
                 "updatedAt": "2021-06-29T15:02:57.715Z",
                 "__v": 0
@@ -320,19 +329,19 @@
           "description": "Stores Gender of the user"
         },
         "country": {
-          "type": "String",
+          "type": "string",
           "description": "Stores Country of the user"
         },
         "state": {
-          "type": "String",
+          "type": "string",
           "description": "Stores State of the user"
         },
         "organization": {
-          "type": "String",
+          "type": "string",
           "description": "Stores Organization of the user"
         },
         "phone":{
-          "type":"String",
+          "type":"string",
           "description": "Stores Phone Number of the user"
         },
         "userType": {
@@ -411,23 +420,23 @@
           "description": "Stores Gender of the user"
         },
         "country": {
-          "type": "String",
+          "type": "string",
           "description": "Stores Country of the user"
         },
         "state": {
-          "type": "String",
+          "type": "string",
           "description": "Stores State of the user"
         },
         "organization": {
-          "type": "String",
+          "type": "string",
           "description": "Stores Organization of the user"
         },
         "phone":{
-          "type":"String",
+          "type":"string",
           "description": "Stores Phone Number of the user"
         },
         "userType": {
-          "type": "String",
+          "type": "string",
           "enum": ["ADMIN", "USER", "SUPERADMIN", "POWERUSER"],
           "default": "USER",
           "description": "Stores role of the user"
