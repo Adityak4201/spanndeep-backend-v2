@@ -34,7 +34,8 @@ exports.Authority = async (req, res) => {
 
         user.userType = userType
         const updatedUser = await user.save()
-        res.json(updatedUser)
+        updatedUser.password = undefined;
+        res.send(updatedUser)
     } catch (e) {
         res.status(500).send()
     }
