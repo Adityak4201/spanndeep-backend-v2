@@ -7,6 +7,7 @@ const AuthRoute = require("./routes/auth");
 const UserRoute = require("./routes/user")
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../swagger.json");
+require("dotenv").config();
 
 const main = async () => {
   const app = express();
@@ -14,6 +15,10 @@ const main = async () => {
   connectMongoDB();
   app.use(cors({}));
   app.use(express.json());
+  app.use( bodyParser.json() ); 
+  app.use(bodyParser.urlencoded({   
+    extended: true
+  }));
 
   app.use("/api/analytics", AnalyticsRoute);
   app.use("/api/auth", AuthRoute);
