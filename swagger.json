@@ -224,8 +224,69 @@
         ],
         "produces": ["application/json"]
       }
+    },
+    "/users/update-Authority": {
+      "post": {
+        "tags": ["Admin"],
+        "summary": "Change User Authority",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "required": ["email", "userType"],
+              "$ref": "#/definitions/Admin"
+            },
+            "examples": {
+              "application/json": {
+                "userType": "POWERUSER",
+                "_id": "60db3535402b642798c0d602",
+                "email": "johndoe@gmail.com",
+                "firstName": "john",
+                "lastName": "doe",
+                "age": "18",
+                "gender": "MALE",
+                "country": "India",
+                "state": "Assam",
+                "organization": "tanmanngadi",
+                "createdAt": "2021-06-29T14:59:01.653Z",
+                "updatedAt": "2021-06-29T15:02:57.715Z",
+                "__v": 0
+              }
+            }
+          },
+          "400": {
+            "description": "BAD BODY",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Register User Authority",
+            "in": "body",
+            "description": "Form Body for User Authority",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UserAuthorityInput",
+              "example": {
+                "email": "johndoe@email.com",
+                "userType": "POWERUSER"
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"]
+      }
     }
   },
+
   "definitions": {
     "User": {
       "properties": {
@@ -257,6 +318,22 @@
           "type": "string",
           "enum": ["MALE", "FEMALE", "OTHERS"],
           "description": "Stores Gender of the user"
+        },
+        "country": {
+          "type": "String",
+          "description": "Stores Country of the user"
+        },
+        "state": {
+          "type": "String",
+          "description": "Stores State of the user"
+        },
+        "organization": {
+          "type": "String",
+          "description": "Stores Organization of the user"
+        },
+        "phone":{
+          "type":"String",
+          "description": "Stores Phone Number of the user"
         },
         "userType": {
           "type": "string",
@@ -367,6 +444,19 @@
         "password": {
           "type": "string",
           "description": "Stores Hashed Password of the user"
+        }
+      }
+    },
+    "UserAuthorityInput": {
+      "required": ["email", "userType"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Stores Email of the user"
+        },
+        "userType": {
+          "type": "string",
+          "description": "Stores role of the user "
         }
       }
     },
