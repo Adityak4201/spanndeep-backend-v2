@@ -125,7 +125,6 @@
                 "userType": "USER",
                 "_id": "60b5ae5f9542ebd58c273d84",
                 "email": "name@email.com",
-                "password": "$argon2i$v=19$m=4096,t=3,p=1$WCSUJVT1epEz6tWq42RHxw$9mdMrxf4EsknjcZiBbr4H2xLFcij56dT1cYig2gmCvo",
                 "firstName": "John",
                 "lastName": "Doe",
                 "age": "21",
