@@ -19,7 +19,7 @@ exports.createAdmin = async (userData) => {
   try {
     const hashedPassword = await argon2.hash(userData.password);
     userData.password = hashedPassword;
-    userData.userType = "ADMIN";
+    userData.userType = "POWERUSER";
     const user = new User(userData);
     const createdUser = await user.save();
     delete createdUser.password;

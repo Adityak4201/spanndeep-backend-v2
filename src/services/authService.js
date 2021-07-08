@@ -10,6 +10,7 @@ exports.authenticateUser = async (credentials) => {
     }
     if (await argon2.verify(user.password, credentials.password)) {
       delete user.password;
+      // console.log(user);
       return user;
     } else {
       throw "Invalid Credentials";
@@ -31,4 +32,17 @@ exports.signJWT = async (email) => {
   });
   if (jwtoken) return jwtoken;
   throw "Error signing JWT";
+};
+
+exports.GetUser = async (credentials) => {
+  // console.log(credentials);
+  try {
+    const user = await User.findOne({ email: credentials.email });
+    console.log("user", user);
+    // if (!user) {
+    //   throw "Invalid Credentials";
+    // }
+  } catch (error) {
+    throw error;
+  }
 };
